@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Stephanie Shinn - IAM Consultant specializing in identity engineering, PKI, and quantum-safe PKI. IEEE-published researcher in post-quantum cryptography.">
+  <title>Stephanie Shinn - IAM Consultant</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root{
+      --navy:#152e47;
+      --dark:#0a1929;
+      --accent:#2c5278;
+      --ink:#0a1929;
+      --muted:#5a6268;
+      --card:#ffffff;
+    }
+    body{
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+      height: 100vh; width: 100vw;
+      background: #ffffff; color: var(--ink);
+      overflow: hidden;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto 1fr;
+      height: 100vh; width: 100vw;
+    }
+    .panel{
+      padding: 1.5rem 1.6rem;
+      overflow-y: auto;
+      position: relative;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .panel:hover{ transform: scale(1.01); z-index: 5; box-shadow: 0 18px 48px rgba(0,0,0,.18); }
+
+    .hero{
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, var(--dark) 0%, var(--navy) 100%);
+      color:#fff;
+      text-align:center;
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      padding: 1.9rem 1.5rem;
+    }
+    .hero h1{ font-size: 2.75rem; margin-bottom:.45rem; }
+    .hero .headline{ font-size: 1.18rem; color:#7eb3e0; margin-bottom:.8rem; }
+    .hero .summary{ max-width: 900px; line-height:1.55; font-size: 1.0rem; }
+    .hero .cta{ display:flex; gap:.75rem; flex-wrap:wrap; justify-content:center; margin-top:1.1rem; }
+    .btn{
+      display:inline-flex; align-items:center; gap:.45rem;
+      padding:.55rem .85rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.25);
+      color:#fff; text-decoration:none;
+      font-size:.92rem;
+      background: rgba(255,255,255,.08);
+      transition: background .15s ease, transform .15s ease;
+    }
+    .btn:hover{ background: rgba(255,255,255,.16); transform: translateY(-1px); }
+
+    .section-title{
+      font-size: 1.35rem;
+      margin-bottom: .6rem;
+      padding-bottom: .25rem;
+      border-bottom: 3px solid var(--accent);
+      display:inline-block;
+      color: var(--navy);
+    }
+    .card{
+      background: #ffffff;
+      border: 1px solid rgba(10,25,41,.08);
+      border-radius: 12px;
+      padding: .8rem .9rem;
+      margin-bottom: .6rem;
+    }
+    .role{ font-weight:700; color: var(--navy); font-size: 1rem; }
+    .org{ color: var(--muted); font-size:.88rem; margin-top:.15rem; }
+
+/* Certifications & Organizations text should match body text color */
+.card.certs .org{ color: var(--ink); }
+
+    .dates{ color: var(--muted); font-size:.82rem; font-style: italic; margin-top:.15rem; }
+    ul{ margin-top:.55rem; padding-left: 1.05rem; }
+    li{ margin:.14rem 0; line-height:1.28; font-size:.9rem; }
+
+    .skills{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: .7rem;
+    }
+    .skill-group h3{ font-size:.95rem; margin-bottom:.35rem; color: var(--navy); }
+    .skill-group p{ font-size:.9rem; line-height:1.45; color:#233547; }
+
+    .pub{
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      /* Match the light/white "card" look used elsewhere, while keeping the blue accent line */
+      background: #eaf2ff !important;
+      border: 1px solid rgba(10,25,41,.08);
+      border-left: 4px solid var(--accent);
+      padding: .9rem;
+      border-radius: 10px;
+      margin-top: .6rem;
+    }
+    .pub a{ color: var(--navy); text-decoration:none; font-weight:700; }
+    .pub a:hover{ text-decoration: underline; }
+    .pub .meta{ margin-top:.25rem; color: var(--muted); font-size:.85rem; font-style: italic; }
+    .pub .note{ margin-top:.55rem; font-size:.92rem; line-height:1.45; color:#233547; }
+
+    /* Hide scrollbars */
+    .panel::-webkit-scrollbar{ width: 0px; background: transparent; }
+    .panel{ scrollbar-width:none; -ms-overflow-style:none; }
+
+    /* Laptop-height optimization */
+    @media (max-height: 850px){
+      .panel{ padding: 1.25rem 1.35rem; }
+      .hero{ padding: 1.55rem 1.35rem; }
+      .hero h1{ font-size: 2.45rem; }
+      .hero .headline{ font-size: 1.08rem; }
+      .hero .summary{ font-size: .98rem; }
+      .btn{ padding:.52rem .82rem; font-size:.92rem; }
+      .card{ padding:.72rem .82rem; margin-bottom:.5rem; }
+      li{ font-size:.88rem; }
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px){
+      body{ overflow-y: auto; }
+      .grid{ grid-template-columns: 1fr; grid-template-rows: auto; height:auto; }
+      .panel{ min-height: auto; }
+      .panel:hover{ transform:none; box-shadow:none; }
+      .skills{ grid-template-columns: 1fr; }
+      .hero h1{ font-size: 2.2rem; }
+    }
+
+    
+
+    /* Print */
+    @media print{
+      body{ overflow: visible !important; background:#fff !important; }
+      .grid{ height:auto !important; grid-template-columns:1fr !important; }
+      .panel{ overflow: visible !important; box-shadow:none !important; transform:none !important; }
+      .hero{ background:#fff !important; color:#000 !important; text-align:left !important; align-items:flex-start !important; padding: 0 0 .25rem 0 !important; border-bottom: 2px solid var(--navy); }
+      .hero .headline{ color: var(--navy) !important; }
+      .btn{ display:none !important; }
+      .card{ background:#fff !important; border:1px solid #ddd !important; }
+      a{ color:#000 !important; text-decoration:none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid">
+
+    <section class="panel hero">
+      <h1>Stephanie Shinn</h1>
+      <div class="headline">Identity & Access Management | PKI | Quantum-Safe PKI</div>
+      <p class="summary">IAM Consultant with a background in identity engineering, PKI, and security automation across enterprise cloud environments. Experienced in SSO integrations, CI/CD pipelines, and operational support for identity platforms. IEEE-published researcher focused on post-quantum cryptography and securing real-world systems against emerging threats.</p>
+      <div class="cta">
+        <a class="btn" href="mailto:stephanieshinn@outlook.com">✉️ Email</a>
+        <a class="btn" href="tel:952-201-4434">📞 952-201-4434</a>
+        <a class="btn" href="https://www.linkedin.com/in/stephanie-s-shinn/" target="_blank" rel="noopener">💼 LinkedIn</a>
+        <a class="btn" href="https://github.com/ShinnDing" target="_blank" rel="noopener">💻 GitHub</a>
+        <a class="btn" href="Stephanie_Shinn_Resume_v4.pdf" target="_blank" rel="noopener">⬇️ Download PDF</a>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2 class="section-title">Experience</h2>
+
+      <div class="card">
+        <div class="role">IAM Consultant (IAM Engineering)</div>
+        <div class="org">Cargill, Inc. | Wayzata, MN</div>
+        <div class="dates">Aug 2025 - Present (Remote)</div>
+        <ul>
+          <li>Promoted to Professional level within IAM Engineering.</li>
+          <li>Identity platform, SSO, and PKI reliability.</li>
+          <li>IAM infrastructure and security automation.</li>
+          <li>Collaborate with cross-functional teams.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="role">Associate IAM Consultant / Platform & Infrastructure Engineer</div>
+        <div class="org">Cargill, Inc. | Wayzata, MN</div>
+        <div class="dates">Oct 2022 - Jul 2025 (Remote)</div>
+        <ul>
+          <li>Continuous improvement of IAM tooling and operational processes.</li>
+          <li>CI/CD pipeline enhancements (GitHub Actions and Vela).</li>
+          <li>Troubleshot SSO integrations and authentication flows (SAML, OIDC).</li>
+          <li>PKI-related tasks including certificate troubleshooting and rotations.</li>
+          <li>Developed API libraries and authored SOPs.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="role">Office Administrator</div>
+        <div class="org">Garmin International, Inc. | Chanhassen, MN</div>
+        <div class="dates">Mar 2014 - Jun 2022</div>
+        <ul>
+          <li>Managed day-to-day office operations and internal technology needs.</li>
+          <li>Updated release notes using HTML, CSS, and JavaScript.</li>
+          <li>Created training and promotional media using Adobe Creative Suite.</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <section class="panel">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills">
+
+        <div class="card skill-group">
+          <h3>Identity, Security & Cryptography</h3>
+          <p>IAM • SSO (SAML, OIDC) • PKI • QS-PKI / PQC • Security-as-Code</p>
+        </div>
+
+        <div class="card skill-group">
+          <h3>Cloud Identity, IAM Platforms &amp; Enterprise Tooling</h3>
+          <p>Microsoft Azure • Entra ID • AWS • Active Directory • HashiCorp Vault • Datadog • SailPoint • Okta • Keyfactor • Entrust • Jira</p>
+        </div>
+
+        <div class="card skill-group">
+          <h3>Automation, CI/CD & IaC</h3>
+          <p>Vela • GitHub Actions • Go • Terraform • Docker • Podman</p>
+        </div>
+
+        <div class="card skill-group">
+          <h3>Programming & Scripting</h3>
+          <p>Go • Java • JavaScript • Python • Bash • PowerShell • JSON • YAML</p>
+        </div>
+
+        <div class="card skill-group">
+          <h3>Applied AI / Data Analysis</h3>
+          <p>Jupyter • Scikit-learn • LLM workflows • Local & hosted LLM tooling</p>
+        </div>
+
+        <div class="card skill-group" >
+          <h3>Web & Creative Tools</h3>
+          <p>HTML • CSS • Adobe Creative Suite</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2 class="section-title">Education &amp; Research</h2>
+
+      <div class="card">
+        <div class="role">M.S. in Computer Science</div>
+        <div class="org">Metropolitan State University | Dec 2025 | GPA 3.88</div>
+        <ul>
+          <li><strong>Thesis:</strong> CRYSTALS-Kyber KEM Decapsulation with Single-Point Pseudo-Random Cache Flushing</li>
+        </ul>
+      </div>
+
+      <div class="pub">
+        <div><a href="https://ieeexplore.ieee.org/document/11250566" target="_blank" rel="noopener">CRYSTALS-Kyber KEM Decapsulation with Single-Point Pseudo-Random Cache Flushing</a></div>
+        <div class="meta">Published in IEEE | Presented at VCRIS 2025, Vietnam | Oct 2025</div>
+        <div class="note">Impact: 100% attack prevention in a vulnerable cloud environment with 6.2% performance improvement.</div>
+      </div>
+
+      
+      <div class="card certs" style="margin-top:.9rem;">
+        <div class="role">Certifications &amp; Organizations</div>
+        <div class="org" style="margin-top:.35rem;">
+          <strong>Training:</strong>
+          Udemy (Java Programming Masterclass) •  LinkedIn Learning (AD CS, Azure DevOps, REST APIs, HTML/CSS/JS, SQL)
+        </div>
+        <div class="org" style="margin-top:.45rem;">
+          <strong>Organizations:</strong>
+          Cargill Women in IT • Cargill Young Professionals Network • WomenTeching • National Society of Leadership &amp; Success
+        </div>
+      </div>
+    </section>
+
+
+  </div>
+
+</body>
+</html>
