@@ -97,9 +97,9 @@
     li{ margin:.14rem 0; line-height:1.28; font-size:.9rem; }
 
     .skills{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: .7rem;
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: .45rem; /* tighter spacing for skill cards */
     }
     .skill-group h3{ font-size:.95rem; margin-bottom:.35rem; color: var(--navy); }
     .skill-group p{ font-size:.9rem; line-height:1.45; color:#233547; }
@@ -143,9 +143,14 @@
       color:#233547;
     }
 
-    /* EXTRA SPACING ONLY IN EDUCATION & RESEARCH */
-    .panel.education .card{ margin-bottom: 1rem; }
-    .panel.education .pub{ margin-bottom: 1rem; }
+    /* Spacing tuned ONLY for Education & Research */
+    .panel.education .card{
+      margin-bottom: 1.1rem;
+    }
+
+    .panel.education .pub{
+      margin: 1rem 0;
+    }
 
     /* Hide scrollbars */
     .panel::-webkit-scrollbar{ width: 0px; background: transparent; }
