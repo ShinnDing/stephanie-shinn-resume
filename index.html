@@ -28,13 +28,21 @@
       height: 100vh; width: 100vw;
     }
 
+    /* FIX: stop hover shadows/animations on big scrollable panels (prevents Chrome/macOS flicker) */
     .panel{
       padding: 1.5rem 1.6rem;
       overflow-y: auto;
       position: relative;
+      transition: none;
+      box-shadow: none;
+    }
 
-      /* static depth, no animation */
-      box-shadow: 0 6px 18px rgba(0,0,0,.10);
+    /* Keep the hover “lines” effect safely */
+    @media (hover: hover) and (pointer: fine){
+      .panel:hover{
+        outline: 1px solid rgba(44,82,120,.28);
+        outline-offset: -2px;
+      }
     }
 
     .hero{
@@ -91,7 +99,7 @@
     .skills{
     display:grid;
     grid-template-columns: 1fr;
-    gap: .45rem; /* tighter spacing for skill cards */
+    gap: .30rem; /* tighter spacing for skill cards */
     }
     .skill-group h3{ font-size:.95rem; margin-bottom:.35rem; color: var(--navy); }
     .skill-group p{ font-size:.9rem; line-height:1.45; color:#233547; }
