@@ -22,11 +22,14 @@
       overflow: hidden;
     }
     .grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: auto 1fr;
-      height: 100vh; width: 100vw;
-    }
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    height: 100vh;
+    width: 100vw;
+    column-gap: 1.2rem;   /* space between panels */
+    padding: 0 1.2rem;    /* space from screen edges */
+  }
 
     /* FIX: stop hover shadows/animations on big scrollable panels (prevents Chrome/macOS flicker) */
     .panel{
