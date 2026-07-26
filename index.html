@@ -17,59 +17,82 @@
     }
     body{
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-      height: 100vh; width: 100vw;
+      width: 100vw;
       background: #ffffff; color: var(--ink);
-      overflow: hidden;
     }
     .grid{
       display:grid;
       grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: auto 1fr;
-      height: 100vh; width: 100vw;
+      grid-template-rows: auto auto;
+      width: 100vw;
     }
 
-    /* FIX: stop hover shadows/animations on big scrollable panels (prevents Chrome/macOS flicker) */
     .panel{
       padding: 1.5rem 1.6rem;
-      overflow-y: auto;
       position: relative;
       transition: none;
       box-shadow: none;
     }
 
-    /* Keep the hover “lines” effect safely */
-    @media (hover: hover) and (pointer: fine){
-      .panel:hover{
-        outline: 1px solid rgba(44,82,120,.28);
-        outline-offset: -2px;
-      }
+    .about .cta{ display:flex; gap:.75rem; flex-wrap:wrap; margin: .5rem 0 .9rem 0; }
+
+    .about{
+      grid-column: 1 / -1;
+      display:flex;
+      align-items:flex-start;
+      gap: 2.2rem;
+      background:#ffffff;
+    }
+    .about .avatar{
+      flex: 0 0 auto;
+      width: 230px; height: 230px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    .about .avatar img{ width:100%; height:100%; object-fit:cover; object-position: 58% 50%; display:block; }
+    .about .summary{ line-height:1.55; font-size: .98rem; color:#233547; max-width: 980px; }
+    .about .name{ font-size: 1.6rem; color: var(--navy); margin-bottom:.1rem; }
+    .about .name-headline{ font-size: .95rem; color: var(--accent); font-weight:600; margin-bottom:.7rem; }
+
+    .fun-facts{ margin-top:1rem; padding-top:.9rem; border-top: 1px solid rgba(10,25,41,.1); }
+    .fun-facts-label{
+      font-size:.78rem;
+      font-weight:700;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      color: var(--muted);
+      margin-bottom:.45rem;
+    }
+    .fun-facts-list{
+      list-style:none;
+      padding-left:0;
+      margin-top:0;
+      display:flex;
+      flex-wrap:wrap;
+      column-gap:1.6rem;
+      row-gap:.35rem;
+    }
+    .fun-facts-list li{
+      font-size:.92rem;
+      color:#233547;
+      margin:0;
     }
 
-    .hero{
-      grid-column: 1 / -1;
-      background: linear-gradient(135deg, var(--dark) 0%, var(--navy) 100%);
-      color:#fff;
-      text-align:center;
-      display:flex; flex-direction:column;
-      align-items:center; justify-content:center;
-      padding: 1.9rem 1.5rem;
+    @media (max-width: 1024px){
+      .about{ flex-direction:column; align-items:flex-start; }
     }
-    .hero h1{ font-size: 2.75rem; margin-bottom:.45rem; }
-    .hero .headline{ font-size: 1.18rem; color:#7eb3e0; margin-bottom:.8rem; }
-    .hero .summary{ max-width: 900px; line-height:1.55; font-size: 1.0rem; }
-    .hero .cta{ display:flex; gap:.75rem; flex-wrap:wrap; justify-content:center; margin-top:1.1rem; }
 
     .btn{
       display:inline-flex; align-items:center; gap:.45rem;
       padding:.55rem .85rem;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.25);
-      color:#fff; text-decoration:none;
+      border: 1px solid rgba(10,25,41,.18);
+      color: var(--navy); text-decoration:none;
       font-size:.92rem;
-      background: rgba(255,255,255,.08);
+      background: rgba(10,25,41,.05);
       transition: background .15s ease, transform .15s ease;
     }
-    .btn:hover{ background: rgba(255,255,255,.16); transform: translateY(-1px); }
+    .btn:hover{ background: rgba(10,25,41,.1); transform: translateY(-1px); }
 
     .section-title{
       font-size: 1.35rem;
@@ -105,12 +128,11 @@
     .skill-group p{ font-size:.9rem; line-height:1.45; color:#233547; }
 
     .pub{
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-      background: #eaf2ff !important;
+      background: #ffffff;
       border: 1px solid rgba(10,25,41,.08);
-      border-left: 4px solid var(--accent);
+      border-left: 3px solid var(--accent);
       padding: .9rem;
-      border-radius: 10px;
+      border-radius: 12px;
       margin-top: .6rem;
     }
 
@@ -157,23 +179,15 @@
   }
 
 
-    /* Hide scrollbars */
-    .panel::-webkit-scrollbar{ width: 0px; background: transparent; }
-    .panel{ scrollbar-width:none; -ms-overflow-style:none; }
-
     /* Laptop-height optimization */
     @media (max-height: 850px){
       .panel{ padding: 1.25rem 1.35rem; }
-      .hero{ padding: 1.55rem 1.35rem; }
-      .hero h1{ font-size: 2.45rem; }
-      .hero .headline{ font-size: 1.08rem; }
-      .hero .summary{ font-size: .98rem; }
       .btn{ padding:.52rem .82rem; font-size:.92rem; }
       .card{ padding:.72rem .82rem; margin-bottom:.5rem; }
       li{ font-size:.88rem; }
     }
 
-    /* Pull outer bottom panels inward (desktop only) WITHOUT affecting hero */
+    /* Pull outer bottom panels inward (desktop only) */
     @media (min-width: 1025px){
       .panel.experience{ margin-left: 1.1rem; }
       .panel.education{ margin-right: 1.1rem; }
@@ -181,23 +195,18 @@
 
     /* Responsive */
     @media (max-width: 1024px){
-      body{ overflow-y: auto; }
-      .grid{ grid-template-columns: 1fr; grid-template-rows: auto; height:auto; }
-      .panel{ min-height: auto; }
-      .panel:hover{ outline:none; }
+      .grid{ grid-template-columns: 1fr; }
       .skills{ grid-template-columns: 1fr; }
-      .hero h1{ font-size: 2.2rem; }
       .panel.experience{ margin-left: 0; }
       .panel.education{ margin-right: 0; }
     }
 
     /* Print */
     @media print{
-      body{ overflow: visible !important; background:#fff !important; }
-      .grid{ height:auto !important; grid-template-columns:1fr !important; }
-      .panel{ overflow: visible !important; box-shadow:none !important; transform:none !important; outline:none !important; }
-      .hero{ background:#fff !important; color:#000 !important; text-align:left !important; align-items:flex-start !important; padding: 0 0 .25rem 0 !important; border-bottom: 2px solid var(--navy); }
-      .hero .headline{ color: var(--navy) !important; }
+      body{ background:#fff !important; }
+      .grid{ grid-template-columns:1fr !important; }
+      .panel{ box-shadow:none !important; transform:none !important; outline:none !important; }
+      .about{ border-bottom: 2px solid var(--navy); }
       .btn{ display:none !important; }
       .card{ background:#fff !important; border:1px solid #ddd !important; }
       a{ color:#000 !important; text-decoration:none !important; }
@@ -207,13 +216,26 @@
 <body>
   <div class="grid">
 
-    <section class="panel hero">
-      <h1>Stephanie Shinn</h1>
-      <div class="headline">IAM Engineer | Identity Security & PKI | Post-Quantum Cryptography</div>
-      <p class="summary">IAM Engineer with a background in identity engineering, PKI, and security automation across enterprise cloud environments. Experienced in SSO integrations, CI/CD pipelines, and operational support for identity platforms. IEEE-published researcher focused on post-quantum cryptography and securing real-world systems against emerging threats.</p>
-      <div class="cta">
-        <a class="btn" href="https://www.linkedin.com/in/stephanie-s-shinn/" target="_blank" rel="noopener">💼 LinkedIn</a>
-        <a class="btn" href="https://github.com/ShinnDing" target="_blank" rel="noopener">💻 GitHub</a>
+    <section class="panel about">
+      <div class="avatar"><img src="profile.png" alt="Stephanie Shinn"></div>
+      <div>
+        <div class="name">Stephanie Shinn</div>
+        <div class="name-headline">IAM Engineer | Identity Security &amp; PKI | Post-Quantum Cryptography</div>
+        <div class="cta">
+          <a class="btn" href="https://www.linkedin.com/in/stephanie-s-shinn/" target="_blank" rel="noopener">💼 LinkedIn</a>
+          <a class="btn" href="https://github.com/ShinnDing" target="_blank" rel="noopener">💻 GitHub</a>
+        </div>
+        <h2 class="section-title">About</h2>
+        <p class="summary">IAM Engineer with a background in identity engineering, PKI, and security automation across enterprise cloud environments. Experienced in SSO integrations, CI/CD pipelines, and operational support for identity platforms. IEEE-published researcher focused on post-quantum cryptography and securing real-world systems against emerging threats.</p>
+        <div class="fun-facts">
+          <div class="fun-facts-label">A few fun facts</div>
+          <ul class="fun-facts-list">
+            <li>🎤 Singer/songwriter</li>
+            <li>🎸 Guitar player</li>
+            <li>🎶 Karaoke enthusiast</li>
+            <li>🐕 Yorkie mom</li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -225,23 +247,22 @@
         <div class="org">Cargill, Inc. | Wayzata, MN</div>
         <div class="dates">Aug 2025 - Present (Remote)</div>
         <ul>
-          <li>Promoted to Professional level within IAM Engineering.</li>
-          <li>Identity platform, SSO, and PKI reliability.</li>
-          <li>IAM infrastructure and security automation.</li>
-          <li>Collaborate with cross-functional teams.</li>
+          <li>Materially contribute to Cargill's PKI migration from on-prem to PKIaaS</li>
+          <li>Go-based tooling to support Infrastructure-as-Code (IaC) for IAM platforms.</li>
+          <li>Implement automation across identity platforms (e.g., PKI, Authentication and Authorization).</li>
+          <li>Collaborate with cross-functional teams on quantum-safe cryptography adoption.</li>
         </ul>
       </div>
 
       <div class="card">
-        <div class="role">Associate IAM Consultant / Platform & Infrastructure Engineer</div>
+        <div class="role">Associate IAM Consultant / Platform &amp; Infrastructure Engineer</div>
         <div class="org">Cargill, Inc. | Wayzata, MN</div>
         <div class="dates">Oct 2022 - Jul 2025 (Remote)</div>
         <ul>
-          <li>Continuous improvement of IAM tooling and operational processes.</li>
-          <li>CI/CD pipeline enhancements (GitHub Actions and Vela).</li>
-          <li>Troubleshot SSO integrations and authentication flows (SAML, OIDC).</li>
-          <li>PKI-related tasks including certificate troubleshooting and rotations.</li>
-          <li>Developed API libraries and authored SOPs.</li>
+          <li>Built and maintained CI/CD pipelines (GitHub Actions, Vela) supporting IAM tooling and operations.</li>
+          <li>Resolved SSO integration and authentication issues across SAML and OIDC implementations.</li>
+          <li>Managed PKI certificate lifecycle operations, including troubleshooting and rotations.</li>
+          <li>Developed internal API libraries and authored SOPs to standardize IAM operations.</li>
         </ul>
       </div>
 
@@ -252,7 +273,7 @@
       <div class="skills">
 
         <div class="card skill-group">
-          <h3>Identity, Security & Cryptography</h3>
+          <h3>Identity, Security &amp; Cryptography</h3>
           <p>IAM • SSO (SAML, OIDC) • PKI • QS-PKI / PQC • Security-as-Code</p>
         </div>
 
@@ -262,22 +283,22 @@
         </div>
 
         <div class="card skill-group">
-          <h3>Automation, CI/CD & IaC</h3>
+          <h3>Automation, CI/CD &amp; IaC</h3>
           <p>Vela • GitHub Actions • Go • Terraform • Docker • Podman</p>
         </div>
 
         <div class="card skill-group">
-          <h3>Programming & Scripting</h3>
+          <h3>Programming &amp; Scripting</h3>
           <p>Go • Java • JavaScript • Python • Bash • PowerShell • JSON • YAML</p>
         </div>
 
         <div class="card skill-group">
           <h3>Applied AI / Data Analysis</h3>
-          <p>Jupyter • Scikit-learn • LLM workflows • Local & hosted LLM tooling</p>
+          <p>Jupyter • Scikit-learn • LLM workflows • Local &amp; hosted LLM tooling</p>
         </div>
 
         <div class="card skill-group" >
-          <h3>Web & Creative Tools</h3>
+          <h3>Web &amp; Creative Tools</h3>
           <p>HTML • CSS • Adobe Creative Suite</p>
         </div>
 
@@ -304,16 +325,16 @@
       <div class="card certs">
         <div class="role">Professional Development</div>
         <div class="org" style="margin-top:.45rem;">
+          <strong>Organizations:</strong>
+          PKI Consortium  • Cargill Women in IT • Cargill Women's Network • Cargill Young Professionals Network • National Society of Leadership &amp; Success
+        </div>
+        <div class="org" style="margin-top:.45rem;">
           <strong>Conferences:</strong>
           VCRIS 2025 - Hanoi, Vietnam • Open Source North 2025, 2026 - St. Paul, MN • Keyfactor Connect 2026 - Philadelphia, PA
         </div>
         <div class="org" style="margin-top:.45rem;">
           <strong>Training:</strong>
           Udemy (Java Programming Masterclass) •  LinkedIn Learning (Go Programming, AD CS, Azure DevOps, REST APIs, HTML/CSS/JS, SQL)
-        </div>
-        <div class="org" style="margin-top:.45rem;">
-          <strong>Organizations:</strong>
-          PKI Consortium  • Cargill Women in IT • Cargill Women's Network • Cargill Young Professionals Network • National Society of Leadership &amp; Success
         </div>
       </div>
     </section>
