@@ -51,6 +51,7 @@
     }
     .about .avatar img{ width:100%; height:100%; object-fit:cover; object-position: 58% 50%; display:block; }
     .about .summary{ line-height:1.55; font-size: .98rem; color:#233547; max-width: 980px; }
+    .about .summary a{ color: var(--accent); font-weight:700; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 2px; }
     .about .name{ font-size: 1.6rem; color: var(--navy); margin-bottom:.1rem; }
     .about .name-headline{ font-size: .95rem; color: var(--accent); font-weight:600; margin-bottom:.7rem; }
 
@@ -127,10 +128,24 @@
     .skill-group h3{ font-size:.95rem; margin-bottom:.35rem; color: var(--navy); }
     .skill-group p{ font-size:.9rem; line-height:1.45; color:#233547; }
 
+    /* Publication label above the pub card */
+    .pub-label{
+      font-size:.78rem;
+      font-weight:700;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      color: var(--accent);
+      margin-top: 1rem;
+      margin-bottom:.4rem;
+      display:flex;
+      align-items:center;
+      gap:.35rem;
+    }
+
     .pub{
-      background: #ffffff;
-      border: 1px solid rgba(10,25,41,.08);
-      border-left: 3px solid var(--accent);
+      background: linear-gradient(0deg, rgba(44,82,120,0.05), rgba(44,82,120,0.05));
+      border: 1px solid rgba(44,82,120,.25);
+      border-left: 4px solid var(--accent);
       padding: .9rem;
       border-radius: 12px;
       margin-top: .6rem;
@@ -138,17 +153,20 @@
 
     .pub a{
       color: var(--accent);
-      text-decoration: none;
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 2px;
       font-weight: 700;
     }
 
     .pub a:hover{
-      text-decoration: underline;
+      color: var(--navy);
     }
 
     .pub a::after{
       content: " ↗";
       font-weight: 400;
+      text-decoration: none;
     }
 
     .pub .meta{
@@ -226,7 +244,7 @@
           <a class="btn" href="https://github.com/ShinnDing" target="_blank" rel="noopener">💻 GitHub</a>
         </div>
         <h2 class="section-title">About</h2>
-        <p class="summary">IAM Engineer with a background in identity engineering, PKI, and security automation across enterprise cloud environments. Experienced in SSO integrations, CI/CD pipelines, and operational support for identity platforms. IEEE-published researcher focused on post-quantum cryptography and securing real-world systems against emerging threats.</p>
+        <p class="summary">IAM Engineer with a background in identity engineering, PKI, and security automation across enterprise cloud environments. Experienced in SSO integrations, CI/CD pipelines, and operational support for identity platforms. <a href="https://ieeexplore.ieee.org/document/11250566" target="_blank" rel="noopener">IEEE-published researcher</a> focused on post-quantum cryptography and securing real-world systems against emerging threats.</p>
         <div class="fun-facts">
           <div class="fun-facts-label">A few fun facts</div>
           <ul class="fun-facts-list">
@@ -281,6 +299,7 @@
         </ul>
       </div>
 
+      <div class="pub-label">📄 Published Research (IEEE)</div>
       <div class="pub">
         <div><a href="https://ieeexplore.ieee.org/document/11250566" target="_blank" rel="noopener">CRYSTALS-Kyber KEM Decapsulation with Single-Point Pseudo-Random Cache Flushing</a></div>
         <div class="meta">Published in IEEE | Presented at VCRIS 2025, Vietnam | Oct 2025</div>
