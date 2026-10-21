@@ -122,13 +122,9 @@
     ul{ margin-top:.55rem; padding-left: 1.05rem; }
     li{ margin:.14rem 0; line-height:1.28; font-size:.9rem; }
 
-    .skills{
-    display:grid;
-    grid-template-columns: 1fr;
-    gap: .30rem; /* tighter spacing for skill cards */
-    }
-    .skill-group h3{ font-size:.95rem; margin-bottom:.35rem; color: var(--navy); }
-    .skill-group p{ font-size:.9rem; line-height:1.45; color:#233547; }
+    /* Skills: single card, same look as Professional Development */
+    .card.skills-card .org{ color: var(--ink); margin-top:.45rem; }
+    .card.skills-card .org:first-child{ margin-top:0; }
 
     /* Publication label above the pub card */
     .pub-label{
@@ -216,7 +212,6 @@
     /* Responsive */
     @media (max-width: 1024px){
       .grid{ grid-template-columns: 1fr; }
-      .skills{ grid-template-columns: 1fr; }
       .panel.experience{ margin-left: 0; }
       .panel.skills-panel{ margin-right: 0; }
     }
@@ -327,38 +322,31 @@
 
     <section class="panel skills-panel">
       <h2 class="section-title">Skills</h2>
-      <div class="skills">
-
-        <div class="card skill-group">
-          <h3>Identity, Security &amp; Cryptography</h3>
-          <p>IAM, SSO (SAML, OIDC), PKI, QS-PKI / PQC, Security-as-Code</p>
+      <div class="card skills-card">
+        <div class="org">
+          <strong>Identity, Security &amp; Cryptography:</strong>
+          IAM, SSO (SAML, OIDC), PKI, QS-PKI / PQC, Security-as-Code
         </div>
-
-        <div class="card skill-group">
-          <h3>Cloud Identity, IAM Platforms &amp; Enterprise Tooling</h3>
-          <p>Microsoft Entra ID (fka Azure), Microsoft 365, AWS, Active Directory, Keyfactor, Sectigo, Jira, HashiCorp Vault, Datadog, SailPoint</p>
+        <div class="org">
+          <strong>Cloud Identity, IAM Platforms &amp; Enterprise Tooling:</strong>
+          Microsoft Entra ID (fka Azure), Microsoft 365, AWS, Active Directory, Keyfactor, Sectigo, Jira, HashiCorp Vault, Datadog, SailPoint
         </div>
-
-        <div class="card skill-group">
-          <h3>Automation, CI/CD &amp; IaC</h3>
-          <p>Vela, GitHub Actions, Azure DevOps, Go, Terraform, Docker, Podman</p>
+        <div class="org">
+          <strong>Automation, CI/CD &amp; IaC:</strong>
+          Vela, GitHub Actions, Azure DevOps, Go, Terraform, Docker, Podman
         </div>
-
-        <div class="card skill-group">
-          <h3>Programming &amp; Scripting</h3>
-          <p>Go, Java, JavaScript, Python, Bash, PowerShell, REST APIs, JSON, YAML</p>
+        <div class="org">
+          <strong>Programming &amp; Scripting:</strong>
+          Go, Java, JavaScript, Python, Bash, PowerShell, REST APIs, JSON, YAML
         </div>
-
-        <div class="card skill-group">
-          <h3>Applied AI / Data Analysis</h3>
-          <p>Jupyter, Scikit-learn, LLM workflows, Local &amp; hosted LLM tooling</p>
+        <div class="org">
+          <strong>Applied AI / Data Analysis:</strong>
+          Jupyter, Scikit-learn, LLM workflows, Local &amp; hosted LLM tooling
         </div>
-
-        <div class="card skill-group" >
-          <h3>Web &amp; Creative Tools</h3>
-          <p>HTML, CSS, Astro, Starlight, Adobe Creative Suite</p>
+        <div class="org">
+          <strong>Web &amp; Creative Tools:</strong>
+          HTML, CSS, Astro, Starlight, Adobe Creative Suite
         </div>
-
       </div>
     </section>
 
